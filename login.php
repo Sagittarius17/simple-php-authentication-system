@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
 </head>
 
-<body>
+<body class="bg-dark">
     <?php include 'partials/_nav.php'; ?>
     <?php
     if ($login) {
@@ -51,20 +51,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
 
-
     <div class="container">
-        <h3 style="text-align: center;">Login</h3>
-        <form method="post" action="/demo/login.php">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        <h3 style="text-align: center;" class="text-white">Login To Enter Your Cave!</h3>
+        <div class="row border border-primary bg-secondary">
+            <img src="batman.jpg" alt="login" class="col-6 w-50 my-3">
+            <form method="post" action="/demo/login.php" class="col-6 d-flex flex-column justify-content-center">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
