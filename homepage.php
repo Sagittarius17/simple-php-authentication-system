@@ -21,15 +21,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     <title>Welcome - <?php echo $_SESSION['username'] ?></title>
 </head>
 
-<body>
+<body class="bg-dark">
     <?php include 'partials/_nav.php' ?>
 
-    <div class="container">
+    <div class="container text-center">
         <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
-            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <h4 class="alert-heading">Welcome To The Cave!</h4>
             <hr>
-            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            <h1 class="mb-0">BATMAN</h1>
         </div>
     </div>
 
@@ -46,9 +45,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
     <script>
         function hide() {
-            document.getElementById('signin').hidden = true
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('logout').style.position = 'absolute';
+            document.getElementById('logout').style.right = '25px';
+            document.getElementById('logout').style.top = '8px';
+
         }
+        hide()
     </script>
+
 </body>
 
 </html>

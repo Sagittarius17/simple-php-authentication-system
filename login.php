@@ -37,7 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="bg-dark">
-    <?php include 'partials/_nav.php'; ?>
+    <?php 
+        // include 'partials/_nav.php'; 
+    ?>
     <?php
     if ($login) {
         echo '<div class="alert alert-success close" role="alert">
@@ -52,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 
     <div class="container">
-        <h3 style="text-align: center;" class="text-white">Login To Enter Your Cave!</h3>
+        <h3 style="text-align: center;" class="text-white my-5">Login To Enter Your Cave!</h3>
         <div class="row border border-primary bg-secondary">
             <img src="batman.jpg" alt="login" class="col-6 w-50 my-3">
             <form method="post" action="/demo/login.php" class="col-6 d-flex flex-column justify-content-center">
