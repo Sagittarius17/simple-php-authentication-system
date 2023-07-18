@@ -5,8 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'partials/_db.php';
     $username = $_POST["username"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = md5($_POST["password"]);
     $cpassword = $_POST['cpassword'];
+    // $hashedPassword = md5("$password");//encrypting the password
     // $exists = true;
     $existsql = "SELECT * FROM `users` WHERE username='$username'"; // AND email='$email'
     $result = mysqli_query($conn, $existsql);
@@ -83,15 +84,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="mb-3">
                     <input type="password" class="form-control bg-dark text-white" id="cpassword" name="cpassword" placeholder="Confirm Password">
                 </div>
-                <div class="mb-3 text-white">
+                <!-- <div class="mb-3 text-white">
                     <input type="checkbox" class="" id="checkbox" name="checkbox">
                     <span>I accept all the Terms and Conditions.</span>
-                </div>
-                <!-- <button type="submit" class="btn btn-primary">Signin</button> -->
+                </div> -->
+                <button type="submit" class="btn btn-primary">Signin</button>
                 <!-- Button trigger modal -->
-                <button type="submit" id="signinbtn" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <!-- <button type="submit" id="signinbtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Signin
-                </button>
+                </button> -->
             </form>
 
             <!-- Modal -->
@@ -99,15 +100,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">Please Fill All The Input Fields</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Understood</button>
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
                         </div>
                     </div>
                 </div>
@@ -150,6 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             const email = document.getElementById("email");
             const password = document.getElementById("password");
             const cpassword = document.getElementById("cpassword");
+            const modal = document.getElementById('myModal');
 
             if (username.value === "" || email.value === "" || password.value === "" || cpassword.value === "") {
                 alert("Please fill in all the required fields.");
@@ -159,31 +158,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 cpassword.style.border = "2px solid orange";
                 return; // Stop the form from submitting if validation fails
 
-                // Popup for checkbox
-                const checkbox = document.getElementById("checkbox");
-                const modal = document.getElementById("staticBackdrop");
-                const signinbtn = document.getElementById('signinbtn');
-
-                checkbox.addEventListener("change", function() {
-                    if (checkbox.checked) {
-                        modal.style.display = "none";
-                        signinbtn.disable = false;
-                    } else {
-                        modal.style.display = "block";
-                    }
-                });
-                // if (!document.getElementById("checkbox").checked) {
-                //     event.preventDefault(); // Prevent form submission
-                    
-                // }
             }
+
             // If validation passes, you can submit the form
             form.submit();
         });
 
 
     </script>
-
 
 </body>
 

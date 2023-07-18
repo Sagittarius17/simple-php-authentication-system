@@ -4,8 +4,10 @@ $showError = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'partials/_db.php';
     $username = $_POST["username"];
-    $password = $_POST["password"];
-
+    $password = md5($_POST["password"]);
+    // print_r($_POST);
+    // echo $password; die;
+    // $hashedPassword = password_hash("$password", PASSWORD_DEFAULT);//encrypting the password
     $sql = "SELECT * from users where username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
